@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Web3 from 'web3';
 import NFTContractABI from './Lock.json';
 
-// 0x2818260114E9a41015106e514c8DE2e9f8B9F92B // contract address
+// 0x07374dF25C853De44fdD3D13d568971cFa4691E1 // contract address
 
 const NFTMinter = () => {
     const [web3, setWeb3] = useState(null);
@@ -17,7 +17,7 @@ const NFTMinter = () => {
                 const accounts = await web3.eth.getAccounts();
                 setWeb3(web3);
                 setAccount(accounts[0]);
-                const contract = await new web3.eth.Contract(NFTContractABI, '0x2818260114E9a41015106e514c8DE2e9f8B9F92B');
+                const contract = await new web3.eth.Contract(NFTContractABI, '0x07374dF25C853De44fdD3D13d568971cFa4691E1');
                 console.log("=====", accounts[0]);
                 setContract(contract);
             } catch (error) {
@@ -41,12 +41,18 @@ const NFTMinter = () => {
 
     return (
         <div>
-            {!account && (
-                <button onClick={connectWallet}>Connect Wallet</button>
-            )}
-            {account && (
-                <button onClick={mintNFT}>Mint NFT</button>
-            )}
+          {
+            !account ?
+            <button onClick={connectWallet}>Connect Wallet</button>
+            :
+            <div>
+              <label for="imageUpload">Upload Image:</label>
+              <input type="file" id="imageUpload" accept="image/*"/>
+              <label for="nftText">NFT Text:</label>
+              <input type="text" id="nftText"/>
+              <button onClick={mintNFT}>Mint</button>
+            </div>
+          }
         </div>
     );
 };
