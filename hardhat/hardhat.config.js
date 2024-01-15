@@ -7,6 +7,10 @@ module.exports = {
     sepolia: {
       url: "https://rpc.sepolia.org",
       accounts: ["91709d7dcd1d9faddcd46d6f9f7422e761eabd418c61142665d6f803c80737a3"] // NEVER commit real private keys
+    },
+    goerli: {
+      url: "https://rpc.ankr.com/eth_goerli",
+      accounts: ["91709d7dcd1d9faddcd46d6f9f7422e761eabd418c61142665d6f803c80737a3"] // NEVER commit real private keys
     }
   }
 };
