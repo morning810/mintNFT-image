@@ -34,7 +34,7 @@ const NFTMinter = () => {
                 await contract.methods.mintNFT().send({ from: account });
                 console.log("NFT minted!");
             } catch (error) {
-                console.error(error);
+                console.error(error); 
             }
         }
     };
